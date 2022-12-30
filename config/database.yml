@@ -1,0 +1,22 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: <%= ENV['POSTGRES_USER'] %>
+  password: <%= ENV['POSTGRES_PASSWORD'] %>
+  host: <%= ENV['POSTGRES_HOST'] %>
+  port: 5432
+  template: template0
+
+development:
+  <<: *default
+  database: MyWallet_development
+
+test:
+  <<: *default
+  database: MyWallet_test
+
+production:
+  <<: *default
+  database: MyWallet_production
+  password: <%= ENV["MYWALLET_DATABASE_PASSWORD"] %>
