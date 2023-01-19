@@ -1,0 +1,19 @@
+pt-BR:
+  activerecord:
+    attributes:
+      stock:
+        code: 'Código'
+        name: 'Nome'
+    errors:
+      messages:
+        record_invalid: 'A validação falhou: %{errors}'
+        restrict_dependent_destroy:
+          has_one: 'Não é possível excluir o registro pois existe um %{record} dependente'
+          has_many: 'Não é possível excluir o registro pois existem %{record} dependentes'
+      models:
+        stock:
+          attributes:
+            code:
+              too_short: 'tamanho pequeno'
+              too_long: 'tamanho grande'
+              blank: 'é obrigatório'
