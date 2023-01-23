@@ -1,19 +1,23 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
   <head>
-    <title>Minha Carteira</title>
+    <title><%= t(:name_app) %> - LOGIN</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "login", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
   <body data-flash-messages="<%= JSON.dump(flash.to_a) %>">
     <%= render 'shared/navbar' %>
-    <div class="p-3">
-      <%= yield %>
+    <div class="container" style="height: 90%">
+      <div class="d-flex justify-content-center m-auto" style="height: 100%">
+        <div class="m-auto bg-white" style="min-width: 30rem;  border-radius: 10px; padding: 45px;">
+          <%= yield %>
+        </div>
+      </div>
     </div>
   </body>
 </html>

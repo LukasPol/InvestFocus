@@ -1,0 +1,101 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.alert {
+  color: blue;
+}
+
+.error {
+  color: red;
+}
+
+.success {
+  color: green
+}
+
+.flash-messages {
+  background-color: #eae9e9;
+  padding: 15px;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0,0,0,.5);
+}
+
+.flash-messages > p {margin: 0;}
+
+.actions > input {
+  display: inline-block;
+  padding: var(--space-xxs) var(--space-m);
+  border-radius: var(--border-radius);
+  background-origin: border-box;
+  border: solid 2px transparent;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+  outline: none;
+  transition: filter 400ms, color 200ms;
+  color: var(--color-white);
+  background-image: linear-gradient(to right, var(--color-primary), var(--color-primary-rotate));
+
+  &:hover,
+  &:focus,
+  &:focus-within,
+  &:active {
+    transition: filter 250ms, color 200ms;
+    color: var(--color-white);
+    filter: saturate(1.4) brightness(115%);
+  }
+}
+
+.field {
+  margin: 1rem 0;
+}
+
+.field > input[type=text], .field > input[type=email], .field > input[type=password] {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  padding: var(--space-xxs) var(--space-xs);
+  border: var(--border);
+  border-radius: var(--border-radius);
+  outline: none;
+  transition: box-shadow 250ms;
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--color-glint);
+  }
+
+  &--invalid {
+    border-color: var(--color-primary);
+  }
+}
+
+.field > input:focus {
+  outline: none;
+  box-shadow: 0 0 10px rgba(0,0,0,.5);
+}
+
+.field_with_errors > input[type=text], .field_with_errors > input[type=email], .field_with_errors > input[type=password] {
+  display: block;
+  margin: 0;
+  padding: 0.5rem;
+  color: inherit;
+  width: 100%;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: inherit;
+  line-height: 1rem;
+  border: 2px solid red;
+  border-radius: 0.4rem;
+  transition: box-shadow 300ms;
+  background: url("https://e7.pngegg.com/pngimages/591/346/png-clipart-error-cross-red-cross-thumbnail.png") no-repeat scroll right;
+  background-size: 1.5rem;
+  background-position-x: calc(100% - 12px);
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgba(0,0,0,.5);
+  }
+}
