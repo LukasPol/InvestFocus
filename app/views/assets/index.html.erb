@@ -1,0 +1,16 @@
+<main class="container">
+  <div class="page-title">
+    <h1><%= t(:asset, scope: 'activerecord.models').pluralize %></h1>
+  </div>
+
+  <div class="assets cards">
+    <% @assets.each do |asset|%>
+      <div class="card">
+        <p><strong><%= Asset.human_attribute_name('stock_code') %></strong>: <%= asset.stock.code %></p>
+        <p><strong><%= Asset.human_attribute_name('amount') %></strong>: <%= asset.amount %></p>
+        <p><strong><%= Asset.human_attribute_name('average_price') %></strong>: <%= number_to_currency asset.average_price %></p>
+        <p><strong><%= Asset.human_attribute_name('total_invested') %></strong>: <%= number_to_currency asset.total_invested %></p>
+      </div>
+    <% end %>
+  </div>
+</main>
