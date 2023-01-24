@@ -1,9 +1,20 @@
 pt-BR:
   activerecord:
+    models:
+      asset: 'Ativo'
+      stock: 'Ação'
+      user: 'Usuário'
     attributes:
       stock:
         code: 'Código'
         name: 'Nome'
+      asset:
+        amount: 'Quant.'
+        average_price: 'P. médio'
+        total_invested: 'T. invest.'
+        user: 'Usuário'
+        stock: 'Ação'
+        stock_code: 'Código'
     errors:
       messages:
         record_invalid: 'A validação falhou: %{errors}'
