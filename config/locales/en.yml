@@ -3,3 +3,4 @@ en:
 
   routes:
     assets: 'my-assets'
+    tradings: 'tradings'

@@ -3,6 +3,7 @@ pt-BR:
     models:
       asset: 'Ativo'
       stock: 'Ação'
+      trading: 'Movimentações'
       user: 'Usuário'
     attributes:
       stock:
@@ -15,6 +16,20 @@ pt-BR:
         user: 'Usuário'
         stock: 'Ação'
         stock_code: 'Código'
+      trading:
+        amount: 'Quant.'
+        date: 'Data'
+        kind: 'C / V'
+        total_value: 'Valor total'
+        value_unit: 'Valor unit.'
+        asset: 'Ativo'
+        stock: 'Ação'
+        stock_code: 'Código'
+        user: 'Usuário'
+        kind_enum:
+          buy: 'Compra'
+          sale: 'Venda'
+
     errors:
       messages:
         record_invalid: 'A validação falhou: %{errors}'

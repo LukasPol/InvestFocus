@@ -1,0 +1,9 @@
+<main class="container">
+  <div class="header">
+    <h1><%= t(:trading, scope: 'activerecord.models').pluralize %></h1>
+  </div>
+
+  <div class="tradings cards">
+    <%= render @tradings %>
+  </div>
+</main>
