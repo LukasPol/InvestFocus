@@ -23,5 +23,4 @@ RSpec.describe 'Tradings', type: :request do
       end
     end
   end
-
 end
