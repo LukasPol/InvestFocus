@@ -3,6 +3,7 @@ pt-BR:
     models:
       asset: 'Ativo'
       stock: 'Ação'
+      trading: 'Movimentações'
       user: 'Usuário'
     attributes:
       stock:

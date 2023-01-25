@@ -4,6 +4,7 @@ pt-BR:
 
   routes:
     assets: 'ativos'
+    tradings: 'movimentacoes'
     users: 'users'
 
   helpers:
