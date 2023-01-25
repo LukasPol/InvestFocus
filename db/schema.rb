@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_24_172554) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_25_120827) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -35,6 +35,22 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_24_172554) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "tradings", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.integer "amount", default: 0
+    t.float "value_unit", default: 0.0
+    t.float "total_value", default: 0.0
+    t.integer "kind", default: 0
+    t.date "date"
+    t.uuid "user_id", null: false
+    t.uuid "stock_id", null: false
+    t.uuid "asset_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["asset_id"], name: "index_tradings_on_asset_id"
+    t.index ["stock_id"], name: "index_tradings_on_stock_id"
+    t.index ["user_id"], name: "index_tradings_on_user_id"
+  end
+
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -49,4 +65,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_24_172554) do
 
   add_foreign_key "assets", "stocks"
   add_foreign_key "assets", "users"
+  add_foreign_key "tradings", "assets"
+  add_foreign_key "tradings", "stocks"
+  add_foreign_key "tradings", "users"
 end
