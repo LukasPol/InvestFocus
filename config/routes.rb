@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
-  root to: 'home#index'
+  unauthenticated :user do
+    root to: 'home#index', as: :unauthenticated_user_root
+  end
+
+  authenticated :user do
+    root to: 'assets#index', as: :authenticated_user_root
+  end
 
   get 'home', to: 'home#index'
   devise_for :users
+
+  resources :assets, only: :index, path: I18n.t('routes.assets')
 end

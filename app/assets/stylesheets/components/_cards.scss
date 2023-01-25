@@ -1,0 +1,19 @@
+.cards {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: var(--space-m);
+  flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+
+  .card {
+    background-color: var(--color-white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-large);
+    padding: var(--space-xs);
+
+    @include media(tabletAndUp) {
+      padding: var(--space-l);
+    }
+  }
+}
