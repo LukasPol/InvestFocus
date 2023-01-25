@@ -28,7 +28,7 @@ pt-BR:
         user: 'Usuário'
         kind_enum:
           buy: 'Compra'
-          sell: 'Venda'
+          sale: 'Venda'
 
     errors:
       messages:

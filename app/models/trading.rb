@@ -3,7 +3,7 @@ class Trading < ApplicationRecord
   belongs_to :stock
   belongs_to :asset
 
-  enum kind: { buy: 0, sell: 1 }
+  enum kind: { buy: 0, sale: 1 }
 
   validates :amount, :value_unit, :total_value, :date, :kind, :asset, :stock, :user, presence: true
 
