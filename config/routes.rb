@@ -10,5 +10,5 @@ Rails.application.routes.draw do
   get 'home', to: 'home#index'
   devise_for :users
 
-  resources :assets, only: :index
+  resources :assets, only: :index, path: I18n.t('routes.assets')
 end
