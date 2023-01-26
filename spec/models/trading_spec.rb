@@ -25,5 +25,11 @@ RSpec.describe Trading, type: :model do
         expect(trading.errors.full_messages).to eq(['Data não pode ser do futuro'])
       end
     end
+
+    context 'before validate set_stock' do
+      it 'should create a new Stock' do
+        expect { create(:trading, stock_code: 'TEST99') }.to(change { Stock.count })
+      end
+    end
   end
 end
