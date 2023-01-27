@@ -5,8 +5,7 @@ FactoryBot.define do
     total_value { 2.5 }
     kind { :buy }
     date { Date.yesterday }
-    asset { create(:asset) }
-    stock { create(:stock) }
+    stock_code { 'CODE99' }
     user { create(:user) }
   end
 end
