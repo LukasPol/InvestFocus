@@ -5,7 +5,7 @@ class Trading < ApplicationRecord
   belongs_to :stock
   belongs_to :asset
 
-  enum kind: { buy: 0, sale: 1 }
+  enum kind: { buy: 0, sale: 1, inplit: 2 }
 
   before_validation :set_stock, if: -> { stock.nil? && stock_code.present? }
   before_validation :set_asset

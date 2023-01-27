@@ -19,7 +19,7 @@ pt-BR:
       trading:
         amount: 'Quant.'
         date: 'Data'
-        kind: 'C / V'
+        kind: 'Tipo Mov.'
         total_value: 'Valor total'
         value_unit: 'Valor unit.'
         asset: 'Ativo'
@@ -29,6 +29,7 @@ pt-BR:
         kind_enum:
           buy: 'Compra'
           sale: 'Venda'
+          inplit: 'Grupamento'
 
     errors:
       messages:
