@@ -42,4 +42,16 @@ RSpec.describe Assets::Updater do
       expect(trading.asset.average_price).to eq(0)
     end
   end
+
+  describe 'trading kind inplit' do
+    let(:trading) { create(:trading, kind: :inplit, amount: 10, stock_code: 'TEST99', user:) }
+
+    before :each do
+      create(:trading, amount: 100, value_unit: 2, total_value: 200, stock_code: 'TEST99', user:)
+    end
+
+    it { expect(trading.asset.amount).to eq(10) }
+    it { expect(trading.asset.average_price).to eq(20) }
+    it { expect(trading.asset.total_invested).to eq(200) }
+  end
 end
