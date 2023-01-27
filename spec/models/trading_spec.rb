@@ -31,5 +31,11 @@ RSpec.describe Trading, type: :model do
         expect { create(:trading, stock_code: 'TEST99') }.to(change { Stock.count })
       end
     end
+
+    context 'before validate set_asset' do
+      it 'should create a new Asset' do
+        expect { create(:trading, asset: nil) }.to(change { Asset.count })
+      end
+    end
   end
 end
