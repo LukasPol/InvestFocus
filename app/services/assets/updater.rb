@@ -12,10 +12,13 @@ module Assets
     end
 
     def call
-      if trading.kind == 'buy'
+      case trading.kind
+      when 'buy'
         calculate_buy
-      else
+      when 'sale'
         calculate_sale
+      else
+        calculate_inplit
       end
 
       asset.save
@@ -40,6 +43,11 @@ module Assets
       else
         asset.total_invested = (asset.average_price * asset.amount).round(2)
       end
+    end
+
+    def calculate_inplit
+      asset.amount = asset.amount / trading.amount
+      asset.average_price = asset.average_price * trading.amount
     end
   end
 end
