@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :stock do
     name { 'Petrobrás' }
-    code { 'PETR4' }
+    code { generate(:stock_code) }
   end
 end
