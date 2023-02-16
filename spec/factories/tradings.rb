@@ -8,4 +8,16 @@ FactoryBot.define do
     stock_code { 'CODE99' }
     user { create(:user) }
   end
+
+  trait :buy do
+    kind { :buy }
+  end
+
+  trait :sale do
+    kind { :sale }
+  end
+
+  trait :inplit do
+    kind { :inplit }
+  end
 end
