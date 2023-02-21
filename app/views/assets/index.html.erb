@@ -1,7 +1,17 @@
+<%= turbo_stream_from "importers" %>
+
 <main class="container">
-  <div class="page-title">
-    <h1><%= t(:asset, scope: 'activerecord.models').pluralize %></h1>
+  <div class="header">
+    <div class="page-title">
+      <h1><%= t(:asset, scope: 'activerecord.models').pluralize %></h1>
+    </div>
+    <%= link_to "Importar",
+                new_importer_path,
+                class: "btn btn--primary",
+                data: { turbo_frame: dom_id(Importer.new) } %>
   </div>
+
+  <%= turbo_frame_tag Importer.new %>
 
   <div class="assets cards">
     <% @assets.each do |asset|%>
