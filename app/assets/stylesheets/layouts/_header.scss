@@ -9,4 +9,8 @@
   @include media(tabletAndUp) {
     margin-bottom: var(--space-xl);
   }
+
+  & .page-title{
+    margin-bottom: 0;
+  }
 }

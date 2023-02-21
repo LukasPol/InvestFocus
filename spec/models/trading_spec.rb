@@ -38,4 +38,24 @@ RSpec.describe Trading, type: :model do
       end
     end
   end
+
+  describe 'scopes' do
+    it '.buy' do
+      create_list(:trading, 3, :buy)
+
+      expect(Trading.buy.count).to eq(3)
+    end
+
+    it '.sale' do
+      create_list(:trading, 5, :sale)
+
+      expect(Trading.sale.count).to eq(5)
+    end
+
+    it '.inplit' do
+      create_list(:trading, 2, :inplit)
+
+      expect(Trading.inplit.count).to eq(2)
+    end
+  end
 end

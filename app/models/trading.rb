@@ -22,6 +22,10 @@ class Trading < ApplicationRecord
     Assets::Updater.call(asset, self)
   end
 
+  scope :buy, -> { where(kind: 'buy') }
+  scope :sale, -> { where(kind: 'sale') }
+  scope :inplit, -> { where(kind: 'inplit') }
+
   private
 
   def set_stock

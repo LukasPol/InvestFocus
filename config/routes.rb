@@ -12,4 +12,5 @@ Rails.application.routes.draw do
 
   resources :assets, only: :index, path: I18n.t('routes.assets')
   resources :tradings, only: :index, path: I18n.t('routes.tradings')
+  resources :importer, only: [:new, :create]
 end
