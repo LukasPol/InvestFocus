@@ -53,8 +53,8 @@ SimpleForm.setup do |config|
     b.optional :readonly
 
     ## Inputs
+    b.use :label
     b.use :input, class: 'w-full px-5 py-4 rounded-md border-gray-300 sh-input-preview', error_class: 'border-red-600'
-    b.use :label_input
     b.use :hint,  wrap_with: { tag: :span, class: :hint }
     b.use :error, wrap_with: { tag: :span, class: :error }
 
