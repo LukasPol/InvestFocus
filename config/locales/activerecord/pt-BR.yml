@@ -30,6 +30,8 @@ pt-BR:
           buy: 'Compra'
           sale: 'Venda'
           inplit: 'Grupamento'
+      importer:
+        file: 'Arquivo'
 
     errors:
       messages:

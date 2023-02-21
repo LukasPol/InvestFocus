@@ -4,6 +4,7 @@ pt-BR:
 
   routes:
     assets: 'ativos'
+    importer: 'importacao'
     tradings: 'movimentacoes'
     users: 'users'
 

@@ -4,3 +4,4 @@ en:
   routes:
     assets: 'my-assets'
     tradings: 'tradings'
+    importer: 'importer'
