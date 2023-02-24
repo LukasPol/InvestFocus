@@ -8,4 +8,12 @@ class Asset < ApplicationRecord
   validates :stock_id, uniqueness: { scope: [:user_id] }
 
   validates :average_price, :amount, :total_invested, numericality: { greater_than_or_equal_to: 0 }
+
+  def self.ransackable_attributes(_auth_object = nil)
+    []
+  end
+
+  def self.ransackable_associations(_auth_object = nil)
+    %w[stock]
+  end
 end

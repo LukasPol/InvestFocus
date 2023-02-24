@@ -58,4 +58,14 @@ RSpec.describe Trading, type: :model do
       expect(Trading.inplit.count).to eq(2)
     end
   end
+
+  describe 'search ransack' do
+    context 'ransackable_attributes' do
+      it { expect(Trading.ransackable_attributes).to eq(%w[kind]) }
+    end
+
+    context 'ransackable_associations' do
+      it { expect(Trading.ransackable_associations).to eq(%w[stock]) }
+    end
+  end
 end

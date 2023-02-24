@@ -13,6 +13,16 @@
 
   <%= turbo_frame_tag Importer.new %>
 
+  <%= search_form_for @search, class: 'search' do |f| %>
+    <div>
+      <%= f.search_field :stock_code_cont, class: 'form__input', placeholder: Trading.human_attribute_name("stock"), maxlength: 6 %>
+    </div>
+
+    <div>
+      <%= f.submit class: 'btn btn--dark' %>
+    </div>
+  <% end %>
+
   <div class="assets cards">
     <% @assets.each do |asset|%>
       <div class="card">
