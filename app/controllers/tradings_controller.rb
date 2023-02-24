@@ -1,5 +1,6 @@
 class TradingsController < ApplicationController
   def index
-    @tradings = current_user.tradings
+    @search = current_user.tradings.ransack(params[:q])
+    @tradings = @search.result
   end
 end

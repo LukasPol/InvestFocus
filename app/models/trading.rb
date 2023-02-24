@@ -26,6 +26,14 @@ class Trading < ApplicationRecord
   scope :sale, -> { where(kind: 'sale') }
   scope :inplit, -> { where(kind: 'inplit') }
 
+  def self.ransackable_attributes(_auth_object = nil)
+    %w[kind]
+  end
+
+  def self.ransackable_associations(_auth_object = nil)
+    %w[stock]
+  end
+
   private
 
   def set_stock
