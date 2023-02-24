@@ -16,4 +16,14 @@ RSpec.describe Asset, type: :model do
       it { should validate_numericality_of(:total_invested).is_greater_than_or_equal_to(0) }
     end
   end
+
+  describe 'search ransack' do
+    context 'ransackable_attributes' do
+      it { expect(Asset.ransackable_attributes).to eq([]) }
+    end
+
+    context 'ransackable_associations' do
+      it { expect(Asset.ransackable_associations).to eq(%w[stock]) }
+    end
+  end
 end
