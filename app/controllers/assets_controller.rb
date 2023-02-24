@@ -1,5 +1,6 @@
 class AssetsController < ApplicationController
   def index
-    @assets = current_user.assets
+    @search = current_user.assets.ransack(params[:q])
+    @assets = @search.result
   end
 end
