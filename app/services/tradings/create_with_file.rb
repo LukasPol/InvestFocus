@@ -1,6 +1,6 @@
 module Tradings
   class CreateWithFile
-    attr_reader :file, :user, :errors
+    attr_reader :file, :user
 
     def initialize(file, user)
       @user = user
@@ -14,15 +14,15 @@ module Tradings
 
     def call
       if !exists_rows? || file.nil?
-        errors << { attachment: 'File not supported' }
-        return errors
+        @errors << { attachment: I18n.t(:file_not_supported, scope: 'errors.importer') }
+        return self
       end
 
       rows = set_rows
 
       if rows.empty?
-        errors << { attachment: 'Não tem nenhuma Compra/Venda/Grupamento' }
-        return errors
+        @errors << { attachment: I18n.t(:without_kinds, scope: 'errors.importer') }
+        return self
       end
 
       rows.each do |row|
@@ -34,6 +34,10 @@ module Tradings
       end
 
       true
+    end
+
+    def errors
+      @errors.map(&:values).flatten
     end
 
     private

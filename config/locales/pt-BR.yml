@@ -86,6 +86,9 @@ pt-BR:
       - :year
 
   errors:
+    importer:
+      file_not_supported: 'Arquivo não suportado'
+      without_kinds: 'Não tem nenhuma Compra/Venda/Grupamento'
     format: '%{attribute} %{message}'
     messages:
       accepted: 'deve ser aceito'

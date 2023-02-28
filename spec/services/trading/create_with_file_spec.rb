@@ -28,13 +28,13 @@ RSpec.describe Tradings::CreateWithFile do
       it 'file not supported' do
         file = Rack::Test::UploadedFile.new('spec/fixtures/without_lines.csv', 'text/csv')
 
-        expect(described_class.call(file, user)).to eq([{ attachment: 'File not supported' }])
+        expect(described_class.call(file, user).errors).to eq(['Arquivo não suportado'])
       end
 
       it 'dont have kind Buy/Sale/Inplit' do
         file = Rack::Test::UploadedFile.new('spec/fixtures/with_others_kinds.csv', 'text/csv')
 
-        expect(described_class.call(file, user)).to eq([{ attachment: 'Não tem nenhuma Compra/Venda/Grupamento' }])
+        expect(described_class.call(file, user).errors).to eq(['Não tem nenhuma Compra/Venda/Grupamento'])
       end
     end
   end
