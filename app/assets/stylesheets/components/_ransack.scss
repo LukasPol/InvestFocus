@@ -1,0 +1,29 @@
+.ransack {
+  @include media(tabletAndUp) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__order {
+    margin: var(--space-l) 0;
+    display: flex;
+    align-items: center;
+    gap: var(--space-m);
+
+    p {
+      font-weight: bold;
+    }
+
+    a {
+      font-weight: normal;
+    }
+  }
+}
+
+.search {
+  margin: var(--space-l) 0;
+  display: flex;
+  align-items: center;
+  gap: var(--space-m);
+}
