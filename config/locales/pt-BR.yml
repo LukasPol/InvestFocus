@@ -6,6 +6,11 @@ pt-BR:
 
   create: 'Adicionar'
 
+  navbar:
+    assets: 'Ativos'
+    tradings: 'Movimentações'
+
+
   routes:
     assets: 'ativos'
     importer: 'importacao'
