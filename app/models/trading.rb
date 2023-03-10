@@ -22,12 +22,15 @@ class Trading < ApplicationRecord
     Assets::Updater.call(asset, self)
   end
 
+  broadcasts_to ->(trading) { [trading.user, 'tradings'] }, inserts_by: :prepend
+
+  # default_scope -> { order(date: :desc) }
   scope :buy, -> { where(kind: 'buy') }
   scope :sale, -> { where(kind: 'sale') }
   scope :inplit, -> { where(kind: 'inplit') }
 
   def self.ransackable_attributes(_auth_object = nil)
-    %w[kind]
+    %w[kind date]
   end
 
   def self.ransackable_associations(_auth_object = nil)

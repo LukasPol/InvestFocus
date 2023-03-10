@@ -11,6 +11,6 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :assets, only: :index, path: I18n.t('routes.assets')
-  resources :tradings, only: :index, path: I18n.t('routes.tradings')
+  resources :tradings, only: [:index, :new, :create], path: I18n.t('routes.tradings')
   resources :importer, only: [:new, :create]
 end
