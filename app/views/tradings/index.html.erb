@@ -1,23 +1,21 @@
+<%= turbo_stream_from current_user, "tradings" %>
+
 <main class="container">
   <div class="header">
-    <h1><%= t(:trading, scope: 'activerecord.models').pluralize %></h1>
+    <div class="page-title">
+      <h1><%= t(:trading, scope: 'activerecord.models').pluralize %></h1>
+    </div>
+    <%= link_to t(:create),
+                new_trading_path,
+                class: "btn btn--primary",
+                data: { turbo_frame: dom_id(Trading.new) } %>
   </div>
 
-  <%= search_form_for @search, class: 'search' do |f| %>
-    <div>
-      <%= f.select :kind_eq, trading_kind_enum_search, { include_blank: Trading.human_attribute_name("kind") }, class: 'form__input' %>
-    </div>
+  <%= turbo_frame_tag Trading.new %>
 
-    <div>
-      <%= f.search_field :stock_code_cont, class: 'form__input', placeholder: Trading.human_attribute_name("stock"), maxlength: 6 %>
-    </div>
+  <%= render 'ransack' %>
 
-    <div>
-      <%= f.submit class: 'btn btn--dark' %>
-    </div>
-  <% end %>
-
-  <div class="tradings cards">
+  <%= turbo_frame_tag "tradings", class: 'tradings cards' do %>
     <%= render @tradings %>
-  </div>
+  <% end %>
 </main>

@@ -61,7 +61,7 @@ RSpec.describe Trading, type: :model do
 
   describe 'search ransack' do
     context 'ransackable_attributes' do
-      it { expect(Trading.ransackable_attributes).to eq(%w[kind]) }
+      it { expect(Trading.ransackable_attributes).to eq(%w[kind date]) }
     end
 
     context 'ransackable_associations' do

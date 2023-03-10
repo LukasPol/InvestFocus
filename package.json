@@ -5,6 +5,8 @@
     "@hotwired/stimulus": "^3.2.1",
     "@hotwired/turbo-rails": "^7.2.4",
     "esbuild": "^0.16.12",
+    "jquery": "^3.6.4",
+    "jquery-mask-plugin": "^1.14.16",
     "sass": "^1.57.1",
     "toastify-js": "^1.12.0"
   },

@@ -1,0 +1,21 @@
+<div class="ransack">
+  <%= search_form_for @search, class: 'search' do |f| %>
+    <div>
+      <%= f.select :kind_eq, trading_kind_enum_search, { include_blank: Trading.human_attribute_name("kind") }, class: 'form__input' %>
+    </div>
+
+    <div>
+      <%= f.search_field :stock_code_cont, class: 'form__input', placeholder: Trading.human_attribute_name("stock"), maxlength: 6 %>
+    </div>
+
+    <div>
+      <%= f.submit class: 'btn btn--dark' %>
+    </div>
+  <% end %>
+
+  <div class="ransack__order">
+    <p><%= t(:order) %>:</p>
+    <%= sort_link(@search, :date, class: 'btn btn--light') %>
+    <%= sort_link(@search, :stock_code, class: 'btn btn--light') %>
+  </div>
+</div>

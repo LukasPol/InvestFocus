@@ -65,11 +65,11 @@ SimpleForm.setup do |config|
     # b.use :full_error, wrap_with: { tag: :span, class: :error }
   end
 
-  config.wrappers :custom_input, tag: :fieldset, class: 'flex w-full py-4', error_class: 'text-red-600' do |b|
+  config.wrappers :custom_input, tag: :div do |b|
     b.use :html5
     b.use :placeholder
     b.use :label, class: 'font-medium text-lg mr-1 flex flex-row-reverse justify-end items-center'
-    b.use :input, class: 'w-full px-3 py-2 rounded-md border border-gray-300 sh-input-preview', error_class: 'border  border-red-600'
+    b.use :input, class: 'form__input', error_class: 'form__input--invalid'
     b.use :hint,  wrap_with: { tag: :span }
     b.use :error, wrap_with: { tag: :span, class: 'text-red-600' }
   end

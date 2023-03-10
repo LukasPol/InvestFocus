@@ -1,7 +1,10 @@
-<div class="card">
-  <p><strong><%= Trading.human_attribute_name('stock_code') %></strong>: <%= trading.stock.code %></p>
-  <p><strong><%= Trading.human_attribute_name('amount') %></strong>: <%= trading.amount %></p>
-  <p><strong><%= Trading.human_attribute_name('value_unit') %></strong>: <%= number_to_currency trading.value_unit %></p>
-  <p><strong><%= Trading.human_attribute_name('total_value') %></strong>: <%= number_to_currency trading.total_value %></p>
-  <p><strong><%= Trading.human_attribute_name('kind') %></strong>: <%= trading_locale_kind trading.kind %></p>
-</div>
+<%= turbo_frame_tag trading do %>
+  <div class="card">
+    <p><strong><%= Trading.human_attribute_name('stock_code') %></strong>: <%= trading.stock.code %></p>
+    <p><strong><%= Trading.human_attribute_name('amount') %></strong>: <%= trading.amount %></p>
+    <p><strong><%= Trading.human_attribute_name('value_unit') %></strong>: <%= number_to_currency trading.value_unit %></p>
+    <p><strong><%= Trading.human_attribute_name('total_value') %></strong>: <%= number_to_currency trading.total_value %></p>
+    <p><strong><%= Trading.human_attribute_name('kind') %></strong>: <%= trading_locale_kind trading.kind %></p>
+    <p><strong><%= Trading.human_attribute_name('date') %></strong>: <%= l(trading.date) %></p>
+  </div>
+<% end %>
