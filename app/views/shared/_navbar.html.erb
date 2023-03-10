@@ -1,15 +1,28 @@
-<header class="navbar">
+<header class="navbar" data-controller="navbar_mobile">
   <% if user_signed_in? %>
-    <div class="navbar__brand">
-      <%= t(:name_app) %>
+    <div class="navbar__left">
+      <div class="navbar__brand">
+        <%= t(:name_app) %>
+      </div>
+      <div class="button-open btn btn--primary">
+        Open
+      </div>
     </div>
-    <div class="navbar__name">
-      <%= current_user.name %>
+    <div class="navbar__items">
+      <div class="navbar__item <%= path_active?(t(:assets, scope: 'routes')) ? 'active' : '' %>">
+        <%= link_to t(:assets, scope: 'navbar'), assets_path %>
+      </div>
+      <div class="navbar__item <%= path_active?(t(:tradings, scope: 'routes')) ? 'active' : '' %>">
+        <%= link_to t(:tradings, scope: 'navbar'), tradings_path %>
+      </div>
+      <div class="navbar__name">
+        <%= current_user.name %>
+      </div>
+      <%= button_to "Sign out",
+                    destroy_user_session_path,
+                    method: :delete,
+                    class: "btn btn--dark" %>
     </div>
-    <%= button_to "Sign out",
-                  destroy_user_session_path,
-                  method: :delete,
-                  class: "btn btn--dark" %>
   <% else %>
     <%= link_to "Sign in",
                 new_user_session_path,
