@@ -8,7 +8,7 @@ Um Projeto para acompanhar seus ativos e proventos.
 - Ver preços médios e total investido atualizados;
 - Importar o extrato do site B3;
 
-### Funcionalidades para serem desenvolvidas
+### Funcionalidades para serem desenvolvidas ([Link](https://github.com/users/LukasPol/projects/3))
 
 - Cadastrar proventos(JCP e dividendos);
 - Preço da ação no mercado;
