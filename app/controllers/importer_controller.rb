@@ -6,7 +6,11 @@ class ImporterController < ApplicationController
   def create
     @importer = Importer.create(file_param)
     Tradings::CreateWithFile.call(params[:importer][:file], current_user)
-    redirect_to tradings_path, notice: 'Importação iniciada'
+    @assets = current_user.assets
+    respond_to do |format|
+      format.html { redirect_to tradings_path, notice: 'Importação iniciada' }
+      format.turbo_stream { flash.now[:notice] = 'Importação iniciada.' }
+    end
   end
 
   private

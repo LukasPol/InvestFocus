@@ -9,6 +9,8 @@ class Asset < ApplicationRecord
 
   validates :average_price, :amount, :total_invested, numericality: { greater_than_or_equal_to: 0 }
 
+  broadcasts_to ->(asset) { [asset.user, 'assets'] }, inserts_by: :prepend
+
   def self.ransackable_attributes(_auth_object = nil)
     []
   end
