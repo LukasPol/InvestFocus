@@ -1,4 +1,4 @@
-<%= turbo_stream_from "importers" %>
+<%= turbo_stream_from current_user, "assets" %>
 
 <main class="container">
   <div class="header">
@@ -23,14 +23,7 @@
     </div>
   <% end %>
 
-  <div class="assets cards">
-    <% @assets.each do |asset|%>
-      <div class="card">
-        <p><strong><%= Asset.human_attribute_name('stock_code') %></strong>: <%= asset.stock.code %></p>
-        <p><strong><%= Asset.human_attribute_name('amount') %></strong>: <%= asset.amount %></p>
-        <p><strong><%= Asset.human_attribute_name('average_price') %></strong>: <%= number_to_currency asset.average_price %></p>
-        <p><strong><%= Asset.human_attribute_name('total_invested') %></strong>: <%= number_to_currency asset.total_invested %></p>
-      </div>
-    <% end %>
-  </div>
+  <%= turbo_frame_tag 'assets', class: 'assets cards' do %>
+    <%= render @assets %>
+  <% end %>
 </main>

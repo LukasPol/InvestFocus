@@ -11,6 +11,7 @@
     border-radius: var(--border-radius);
     box-shadow: var(--shadow-large);
     padding: var(--space-xs);
+    animation: appear-then-fade 4s both;
 
     @include media(tabletAndUp) {
       padding: var(--space-l);

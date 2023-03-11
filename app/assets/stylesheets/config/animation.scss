@@ -1,0 +1,16 @@
+@keyframes appear-then-fade {
+  0% {
+    opacity:0;
+    box-shadow: var(--shadow-animate-initial)
+  }
+  5%, 20% {
+    opacity:.5;
+  }
+  20%, 60% {
+    opacity:.8;
+  }
+  60%, 100% {
+    box-shadow: var(--shadow-large);
+    opacity:1;
+  }
+}
