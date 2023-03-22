@@ -38,7 +38,7 @@ RSpec.describe Proceed, type: :model do
         it 'should not create new stock if user dont have trading' do
           proceed = build(:proceed)
           expect(proceed.valid?).to be_falsey
-          expect(proceed.errors.messages[:stock]).to include('Você não tem essa ação')
+          expect(proceed.errors.messages[:stock_code]).to include('Você não tem essa ação')
         end
       end
     end
