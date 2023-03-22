@@ -18,11 +18,13 @@ class Proceed < ApplicationRecord
     errors.add(:date, I18n.t(:after_today, scope: 'errors.messages')) if date && date > Time.zone.today
   end
 
+  broadcasts_to ->(proceed) { [proceed.user, 'proceeds'] }, inserts_by: :prepend
+
   def set_stock
     stock = user&.stocks&.find_by(code: stock_code)
 
     if stock.nil?
-      errors.add(:stock, I18n.t(:dont_have, scope: 'activerecord.errors.models.proceeds.attributes.stock'))
+      errors.add(:stock_code, I18n.t(:dont_have, scope: 'activerecord.errors.models.proceeds.attributes.stock'))
       return false
     end
 

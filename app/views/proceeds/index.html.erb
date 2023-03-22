@@ -1,0 +1,21 @@
+<%= turbo_stream_from current_user, "proceeds" %>
+
+<main class="container">
+  <div class="header">
+    <div class="page-title">
+      <h1><%= t(:proceed, scope: 'activerecord.models').pluralize %></h1>
+    </div>
+    <%= link_to t(:create),
+                new_proceed_path,
+                class: "btn btn--primary",
+                data: { turbo_frame: dom_id(Proceed.new) } %>
+  </div>
+
+  <%= turbo_frame_tag Proceed.new %>
+
+  <%# render 'ransack' %>
+
+  <%= turbo_frame_tag "proceeds", class: 'proceeds cards' do %>
+    <%= render @proceeds %>
+  <% end %>
+</main>

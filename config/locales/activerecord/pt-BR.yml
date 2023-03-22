@@ -3,7 +3,7 @@ pt-BR:
     models:
       asset: 'Ativo'
       stock: 'Ação'
-      proceeds: 'Proventos'
+      proceed: 'Proventos'
       trading: 'Movimentações'
       user: 'Usuário'
     attributes:
@@ -29,7 +29,7 @@ pt-BR:
         user: 'Usuário'
         kind_enum:
           dividends: 'Dividendos'
-          jco: 'JCP'
+          jcp: 'JCP'
       trading:
         amount: 'Quant.'
         date: 'Data'
