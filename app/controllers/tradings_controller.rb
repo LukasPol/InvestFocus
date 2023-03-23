@@ -11,7 +11,7 @@ class TradingsController < ApplicationController
   def create
     @trading = current_user.tradings.new(trading_param)
 
-    if @trading.save!
+    if @trading.save
       respond_to do |format|
         format.html { redirect_to tradings_url, notice: 'Criado com sucesso', status: :created }
         format.turbo_stream
