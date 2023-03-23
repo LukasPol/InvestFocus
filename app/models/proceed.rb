@@ -18,7 +18,11 @@ class Proceed < ApplicationRecord
     errors.add(:date, I18n.t(:after_today, scope: 'errors.messages')) if date && date > Time.zone.today
   end
 
+  after_create :update_proceed_asset
+
   broadcasts_to ->(proceed) { [proceed.user, 'proceeds'] }, inserts_by: :prepend
+
+  private
 
   def set_stock
     stock = user&.stocks&.find_by(code: stock_code)
@@ -40,5 +44,10 @@ class Proceed < ApplicationRecord
     end
 
     self.asset_id = asset.id
+  end
+
+  def update_proceed_asset
+    proceed_received = asset.proceed_received
+    asset.update(proceed_received: proceed_received + total_value)
   end
 end
