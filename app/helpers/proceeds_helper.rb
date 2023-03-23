@@ -8,4 +8,10 @@ module ProceedsHelper
       [proceed_locale_kind(key), key]
     end
   end
+
+  def stock_select
+    current_user.stocks.map do |stock|
+      [stock.code, stock.id]
+    end
+  end
 end

@@ -7,10 +7,10 @@ class Proceed < ApplicationRecord
 
   enum kind: { dividends: 0, jcp: 1 }
 
-  before_validation :set_stock, if: -> { stock.nil? && stock_code.present? }
+  before_validation :set_stock, if: -> { stock_code.present? }
   before_validation :set_asset
 
-  validates :amount, :value_unit, :total_value, :date, :kind, :user, presence: true
+  validates :amount, :value_unit, :total_value, :date, :kind, :asset, :stock, :user, presence: true
 
   validates :amount, :value_unit, :total_value, numericality: { greater_than_or_equal_to: 0 }
 

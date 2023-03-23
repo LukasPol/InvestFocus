@@ -23,6 +23,6 @@ class ProceedsController < ApplicationController
   private
 
   def proceed_params
-    params.require(:proceed).permit(:amount, :value_unit, :total_value, :date, :kind, :stock_code)
+    params.require(:proceed).permit(:amount, :value_unit, :total_value, :date, :kind, :stock_id)
   end
 end
