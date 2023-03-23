@@ -42,6 +42,7 @@ pt-BR:
         stock: 'Ação'
         stock_code: 'Código'
         user: 'Usuário'
+        operation_cost: 'Custo Operac.'
         kind_enum:
           buy: 'Compra'
           sale: 'Venda'

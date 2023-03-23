@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_23_174546) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_23_181543) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -99,6 +99,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_23_174546) do
     t.uuid "asset_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "operation_cost", default: 0.0
     t.index ["asset_id"], name: "index_tradings_on_asset_id"
     t.index ["stock_id"], name: "index_tradings_on_stock_id"
     t.index ["user_id"], name: "index_tradings_on_user_id"
