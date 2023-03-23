@@ -12,7 +12,7 @@ class ProceedsController < ApplicationController
 
     if @proceed.save
       respond_to do |format|
-        format.html { redirect_to proceed_url, notice: 'Criado com sucesso' }
+        format.html { redirect_to proceeds_url, notice: 'Criado com sucesso', status: :created }
         format.turbo_stream
       end
     else
