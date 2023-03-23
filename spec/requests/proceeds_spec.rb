@@ -58,7 +58,6 @@ RSpec.describe '/proceeds', type: :request do
         create(:trading, user:, stock_code: stock.code)
       end
 
-
       let(:params) do
         {
           proceed: {
@@ -72,7 +71,7 @@ RSpec.describe '/proceeds', type: :request do
       end
 
       it 'returns http success' do
-        post proceeds_path, params: params
+        post(proceeds_path, params:)
 
         expect(response).to have_http_status(:created)
       end
@@ -103,7 +102,7 @@ RSpec.describe '/proceeds', type: :request do
       end
 
       it 'not create when user dont have the stock' do
-        post proceeds_path, params: params
+        post(proceeds_path, params:)
 
         expect(response).to have_http_status(:unprocessable_entity)
         expect(assigns(:proceed).errors.messages[:asset]).to include('Você não tem essa ação')
