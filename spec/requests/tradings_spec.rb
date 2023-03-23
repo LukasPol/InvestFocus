@@ -83,5 +83,32 @@ RSpec.describe 'Tradings', type: :request do
         expect { post tradings_path, params: }.to(change { Asset.count })
       end
     end
+
+    context 'Errors' do
+      before :each do
+        user = create(:user)
+        sign_in(user)
+      end
+
+      let(:params) do
+        {
+          trading: {
+            amount: 0,
+            value_unit: 2,
+            total_value: 20,
+            operation_cost: 1,
+            date: Date.tomorrow,
+            stock_code: 'TEST9'
+          }
+        }
+      end
+
+      it 'returns http unprocessable_entity' do
+        post(tradings_path, params:)
+
+        expect(response).to have_http_status(:unprocessable_entity)
+        expect(assigns(:trading).errors.messages[:date]).to include('não pode ser do futuro')
+      end
+    end
   end
 end
