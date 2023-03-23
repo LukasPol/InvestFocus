@@ -24,6 +24,6 @@ class TradingsController < ApplicationController
   private
 
   def trading_param
-    params.require(:trading).permit(:amount, :value_unit, :total_value, :date, :kind, :stock_code)
+    params.require(:trading).permit(:amount, :value_unit, :total_value, :date, :kind, :stock_code, :operation_cost)
   end
 end
