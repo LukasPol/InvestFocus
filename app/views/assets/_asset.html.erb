@@ -4,5 +4,6 @@
     <p><strong><%= Asset.human_attribute_name('amount') %></strong>: <%= asset.amount %></p>
     <p><strong><%= Asset.human_attribute_name('average_price') %></strong>: <%= number_to_currency asset.average_price %></p>
     <p><strong><%= Asset.human_attribute_name('total_invested') %></strong>: <%= number_to_currency asset.total_invested %></p>
+    <p><strong><%= Asset.human_attribute_name('proceed_received') %></strong>: <%= number_to_currency asset.proceed_received %></p>
   </div>
 <% end %>

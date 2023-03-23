@@ -17,6 +17,7 @@ pt-BR:
         user: 'Usuário'
         stock: 'Ação'
         stock_code: 'Código'
+        proceed_received: 'Prov. Receb.'
       proceed:
         amount: 'Quant.'
         date: 'Data'
@@ -25,6 +26,7 @@ pt-BR:
         value_unit: 'Valor unit.'
         asset: 'Ativo'
         stock: 'Ação'
+        stock_id: 'Código'
         stock_code: 'Código'
         user: 'Usuário'
         kind_enum:

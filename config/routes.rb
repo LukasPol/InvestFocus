@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :proceeds
   unauthenticated :user do
     root to: 'home#index', as: :unauthenticated_user_root
   end
@@ -13,5 +12,6 @@ Rails.application.routes.draw do
 
   resources :assets, only: :index, path: I18n.t('routes.assets')
   resources :tradings, only: [:index, :new, :create], path: I18n.t('routes.tradings')
-  resources :importer, only: [:new, :create], path: I18n.t('routes.proceeds')
+  resources :importer, only: [:new, :create]
+  resources :proceeds, only: [:index, :new, :create], path: I18n.t('routes.proceeds')
 end
