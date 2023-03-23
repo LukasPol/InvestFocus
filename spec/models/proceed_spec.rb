@@ -58,4 +58,12 @@ RSpec.describe Proceed, type: :model do
       end
     end
   end
+
+  describe '.update_proceed_asset' do
+    it 'should change asset after create' do
+      proceed = create(:proceed, user:, stock_code:, total_value: 100)
+
+      expect(proceed.asset.proceed_received).to eq(100)
+    end
+  end
 end
