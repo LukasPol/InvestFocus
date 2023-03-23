@@ -9,6 +9,7 @@ pt-BR:
   navbar:
     assets: 'Ativos'
     tradings: 'Movimentações'
+    proceeds: 'Proventos'
 
 
   routes:
@@ -16,6 +17,7 @@ pt-BR:
     importer: 'importacao'
     tradings: 'movimentacoes'
     users: 'users'
+    proceeds: 'proventos'
 
   helpers:
     select:

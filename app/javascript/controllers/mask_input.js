@@ -1,4 +1,3 @@
-window.$ = window.jQuery = require('jquery');
 require("jquery-mask-plugin");
 
 import { Controller } from "@hotwired/stimulus"

@@ -1,0 +1,21 @@
+<%= simple_form_for proceed, html: { class: 'proceed form', data: { controller: "mask_input fill_total_value_controller" } } do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <%= f.input :amount, wrapper: :custom_input, input_html: { maxlength: 6, class: 'amount' } %>
+  <%= f.input :value_unit, wrapper: :custom_input, input_html: { maxlength: 6, class: 'value_unit' }  %>
+  <%= f.input :total_value, as: :string, wrapper: :custom_input, input_html: { maxlength: 6, readonly: true, class: 'total_value' }  %>
+  <%= f.input :date,
+              as: :string,
+              wrapper: :custom_input,
+              order: [:day, :month, :year],
+              end_year: Date.today.year,
+              input_html: { maxlength: 8, data: { masks_target: 'date' }, placeholder: 'DD/MM/AAAA' } %>
+  <%= f.input :kind, as: :select, wrapper: :custom_input, collection: proceed_kind_enum, selected: 0 %>
+  <%= f.input :stock_id, as: :select, wrapper: :custom_input, collection: stock_select, select: 0, include_blank: false %>
+
+  <div>
+    <%= f.submit 'Criar', class: 'btn btn--secondary' %>
+    <%= link_to "Cancelar", tradings_path, class: "btn btn--light" %>
+  </div>
+<% end %>

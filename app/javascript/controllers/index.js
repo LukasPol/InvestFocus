@@ -13,3 +13,6 @@ application.register("mask_input", MaskInput)
 
 import navBarMobileController from "./navbar_mobile_controller"
 application.register("navbar_mobile", navBarMobileController)
+
+import FillTotalValueController from "./fill_total_value_controller"
+application.register("fill_total_value_controller", FillTotalValueController)

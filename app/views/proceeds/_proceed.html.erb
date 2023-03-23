@@ -1,0 +1,10 @@
+<%= turbo_frame_tag proceed do %>
+  <div class="card">
+    <p><strong><%= Proceed.human_attribute_name('stock_code') %></strong>: <%= proceed.stock.code %></p>
+    <p><strong><%= Proceed.human_attribute_name('amount') %></strong>: <%= proceed.amount %></p>
+    <p><strong><%= Proceed.human_attribute_name('value_unit') %></strong>: <%= number_to_currency proceed.value_unit %></p>
+    <p><strong><%= Proceed.human_attribute_name('total_value') %></strong>: <%= number_to_currency proceed.total_value %></p>
+    <p><strong><%= Proceed.human_attribute_name('kind') %></strong>: <%= proceed_locale_kind proceed.kind %></p>
+    <p><strong><%= Proceed.human_attribute_name('date') %></strong>: <%= l(proceed.date) %></p>
+  </div>
+<% end %>

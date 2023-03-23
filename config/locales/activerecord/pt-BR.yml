@@ -3,6 +3,7 @@ pt-BR:
     models:
       asset: 'Ativo'
       stock: 'Ação'
+      proceed: 'Proventos'
       trading: 'Movimentações'
       user: 'Usuário'
     attributes:
@@ -16,6 +17,19 @@ pt-BR:
         user: 'Usuário'
         stock: 'Ação'
         stock_code: 'Código'
+      proceed:
+        amount: 'Quant.'
+        date: 'Data'
+        kind: 'Div/JCP'
+        total_value: 'Valor total'
+        value_unit: 'Valor unit.'
+        asset: 'Ativo'
+        stock: 'Ação'
+        stock_code: 'Código'
+        user: 'Usuário'
+        kind_enum:
+          dividends: 'Dividendos'
+          jcp: 'JCP'
       trading:
         amount: 'Quant.'
         date: 'Data'
@@ -34,6 +48,13 @@ pt-BR:
         file: 'Arquivo'
 
     errors:
+      models:
+        proceeds:
+          attributes:
+            stock:
+              dont_have: 'Você não tem essa ação'
+            asset:
+              dont_have: 'Você não tem essa ação'
       messages:
         record_invalid: 'A validação falhou: %{errors}'
         restrict_dependent_destroy:
