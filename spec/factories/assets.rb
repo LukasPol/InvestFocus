@@ -5,5 +5,6 @@ FactoryBot.define do
     total_invested { 1.5 }
     user { create(:user) }
     stock { create(:stock) }
+    proceed_received { 0 }
   end
 end

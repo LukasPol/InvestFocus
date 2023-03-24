@@ -10,9 +10,9 @@ class Trading < ApplicationRecord
   before_validation :set_stock, if: -> { stock.nil? && stock_code.present? }
   before_validation :set_asset
 
-  validates :amount, :value_unit, :total_value, :date, :kind, :asset, :stock, :user, presence: true
+  validates :amount, :value_unit, :total_value, :operation_cost, :date, :kind, :asset, :stock, :user, presence: true
 
-  validates :amount, :value_unit, :total_value, numericality: { greater_than_or_equal_to: 0 }
+  validates :amount, :value_unit, :total_value, :operation_cost, numericality: { greater_than_or_equal_to: 0 }
 
   validate do
     errors.add(:date, I18n.t(:after_today, scope: 'errors.messages')) if date && date > Time.zone.today

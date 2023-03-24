@@ -9,12 +9,14 @@ RSpec.describe Trading, type: :model do
       it { should validate_presence_of(:user) }
       it { should validate_presence_of(:asset) }
       it { should validate_presence_of(:stock) }
+      it { should validate_presence_of(:operation_cost) }
     end
 
     context 'validate numericality' do
       it { should validate_numericality_of(:value_unit).is_greater_than_or_equal_to(0) }
       it { should validate_numericality_of(:amount).is_greater_than_or_equal_to(0) }
       it { should validate_numericality_of(:total_value).is_greater_than_or_equal_to(0) }
+      it { should validate_numericality_of(:operation_cost).is_greater_than_or_equal_to(0) }
     end
 
     context 'date after today' do

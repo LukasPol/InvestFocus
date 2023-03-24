@@ -7,6 +7,7 @@ FactoryBot.define do
     date { Date.yesterday }
     stock_code { 'CODE99' }
     user { create(:user) }
+    operation_cost { 1 }
   end
 
   trait :buy do
