@@ -1,10 +1,10 @@
-<%= simple_form_for trading, html: { class: 'trading form', data: { controller: "mask_input" } } do |f| %>
+<%= simple_form_for trading, html: { class: 'trading form', data: { controller: "mask_input fill_total_value_controller" } } do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-  <%= f.input :amount, wrapper: :custom_input, input_html: { maxlength: 6 } %>
-  <%= f.input :value_unit, wrapper: :custom_input, input_html: { maxlength: 6 }  %>
-  <%= f.input :total_value, wrapper: :custom_input, input_html: { maxlength: 6 }  %>
+  <%= f.input :amount, wrapper: :custom_input, input_html: { maxlength: 6, class: 'amount' } %>
+  <%= f.input :value_unit, wrapper: :custom_input, input_html: { maxlength: 6 , class: 'value_unit'}  %>
+  <%= f.input :total_value, wrapper: :custom_input, input_html: { maxlength: 6, readonly: true, class: 'total_value' }  %>
   <%= f.input :operation_cost, wrapper: :custom_input, input_html: { maxlength: 6 }  %>
   <%= f.input :date,
               as: :string,
