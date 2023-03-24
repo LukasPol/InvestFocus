@@ -4,7 +4,9 @@
     <p><strong><%= Trading.human_attribute_name('amount') %></strong>: <%= trading.amount %></p>
     <p><strong><%= Trading.human_attribute_name('value_unit') %></strong>: <%= number_to_currency trading.value_unit %></p>
     <p><strong><%= Trading.human_attribute_name('total_value') %></strong>: <%= number_to_currency trading.total_value %></p>
-    <p><strong><%= Trading.human_attribute_name('operation_cost') %></strong>: <%= number_to_currency trading.operation_cost %></p>
+    <% if trading.operation_cost.positive? %>
+      <p><strong><%= Trading.human_attribute_name('operation_cost') %></strong>: <%= number_to_currency trading.operation_cost %></p>
+    <% end %>
     <p><strong><%= Trading.human_attribute_name('kind') %></strong>: <%= trading_locale_kind trading.kind %></p>
     <p><strong><%= Trading.human_attribute_name('date') %></strong>: <%= l(trading.date) %></p>
   </div>
