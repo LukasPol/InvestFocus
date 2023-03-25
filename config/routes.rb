@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  default_url_options host: ENV['DOMAIN_NAME']
+
   unauthenticated :user do
     root to: 'home#index', as: :unauthenticated_user_root
   end
