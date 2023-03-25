@@ -25,6 +25,7 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 group :development, :test do
   gem 'factory_bot_rails', '~> 6.2.0'
+  gem 'pry'
   gem 'rails-controller-testing', '~> 1.0.5'
   gem 'rspec-rails', '~> 6.0.1'
   gem 'rubocop', '~> 1.41.1', require: false
