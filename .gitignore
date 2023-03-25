@@ -44,3 +44,5 @@
 
 /vendor/*
 !/vendor/.keep
+
+coverage/

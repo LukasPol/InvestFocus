@@ -4,12 +4,17 @@ class ImporterController < ApplicationController
   end
 
   def create
-    @importer = Importer.create(file_param)
-    Tradings::CreateWithFile.call(params[:importer][:file], current_user)
-    @assets = current_user.assets
-    respond_to do |format|
-      format.html { redirect_to tradings_path, notice: 'Importação iniciada' }
-      format.turbo_stream { flash.now[:notice] = 'Importação iniciada.' }
+    @importer = current_user.importers.new(file_param)
+
+    if @importer.save
+      Imports::FromB3.call(@importer)
+      @assets = current_user.assets
+      respond_to do |format|
+        format.html { redirect_to tradings_path, notice: 'Importação iniciada' }
+        format.turbo_stream { flash.now[:notice] = 'Importação iniciada.' }
+      end
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 

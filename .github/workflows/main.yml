@@ -33,6 +33,7 @@ jobs:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
           RAILS_ENV: test
+          DOMAIN_NAME: example.com
         run: |
           bundle install --jobs 4 --retry 3
           bundle exec rails db:create db:migrate
