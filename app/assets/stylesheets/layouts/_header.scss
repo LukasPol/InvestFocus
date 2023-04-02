@@ -13,4 +13,19 @@
   & .page-title{
     margin-bottom: 0;
   }
+
+  &--home {
+    height: calc(100vh - 98px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    & h1 {
+      margin-left: var(--space-xxl);
+      margin-bottom: var(--space-m);
+      color: var(--color-primary-rotate);
+      font-weight: bolder;
+      font-size: var(--font-size-xxxl);
+    }
+  }
 }
