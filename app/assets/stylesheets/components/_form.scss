@@ -27,4 +27,21 @@
       border-color: var(--color-primary);
     }
   }
+
+  &__devise {
+    width: 50%;
+    margin: var(--space-l) 0;
+
+    & .form-inputs {
+      margin: var(--space-m) 0;
+
+      & div {
+        margin-bottom: var(--space-m);
+      }
+
+      & input[type=checkbox] {
+        margin-left: var(--space-xxs);
+      }
+    }
+  }
 }

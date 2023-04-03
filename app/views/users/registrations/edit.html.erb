@@ -1,0 +1,41 @@
+<h2><%= t(:title, scope: 'devise.registrations.edit', resource: resource_name.to_s.humanize) %></h2>
+
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: 'form__devise' }) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :email, required: true, autofocus: true, wrapper: :custom_input %>
+
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <p><%= t(:currently_waiting_confirmation_for_email, scope: 'devise.registrations.edit', email: resource.unconfirmed_email) %></p>
+    <% end %>
+
+    <%= f.input :password,
+                hint: t(:leave_blank_if_you_don_t_want_to_change_it, scope: 'devise.registrations.edit'),
+                required: false,
+                input_html: { autocomplete: "new-password" },
+                wrapper: :custom_input %>
+    <%= f.input :password_confirmation,
+                required: false,
+                input_html: { autocomplete: "new-password" },
+                wrapper: :custom_input %>
+    <%= f.input :current_password,
+                hint: t(:we_need_your_current_password_to_confirm_your_changes, scope: 'devise.registrations.edit'),
+                required: true,
+                input_html: { autocomplete: "current-password" },
+                wrapper: :custom_input %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, t(:update, scope: 'devise.registrations.edit'), class: 'btn btn--primary' %>
+  </div>
+<% end %>
+
+<h3><%= t(:cancel_my_account, scope: 'devise.registrations.edit') %></h3>
+
+<p>
+  <%= t(:unhappy, scope: 'devise.registrations.edit') %>
+  <%= link_to t(:cancel_my_account, scope: 'devise.registrations.edit'), registration_path(resource_name), data: { confirm: t(:are_you_sure, scope: 'devise.registrations.edit') }, method: :delete %>
+</p>
+
+<%= link_to t(:back, scope: 'devise.shared.links'), :back %>

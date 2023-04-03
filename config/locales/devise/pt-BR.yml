@@ -130,6 +130,7 @@ pt-BR:
         sign_in: Login
         sign_in_with_provider: Entrar com %{provider}
         sign_up: Inscrever-se
+        sign_out: Sair
       minimum_password_length:
         one: "(Mínimo de %{count} caractere)"
         other: "(Mínimo de %{count} caracteres)"
