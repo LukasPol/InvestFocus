@@ -13,7 +13,7 @@ class TradingsController < ApplicationController
 
     if @trading.save
       respond_to do |format|
-        format.html { redirect_to tradings_url, notice: 'Criado com sucesso', status: :created }
+        format.html { redirect_to tradings_url, notice: t(:created), status: :created }
         format.turbo_stream
       end
     else
