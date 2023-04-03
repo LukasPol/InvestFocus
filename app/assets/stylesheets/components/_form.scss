@@ -43,5 +43,9 @@
         margin-left: var(--space-xxs);
       }
     }
+
+    & .form-actions{
+      text-align: center;
+    }
   }
 }
