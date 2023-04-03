@@ -19,13 +19,13 @@
       <div class="navbar__name">
         <%= current_user.name %>
       </div>
-      <%= button_to "Sign out",
+      <%= button_to t(:sign_out, scope: 'devise.shared.links'),
                     destroy_user_session_path,
                     method: :delete,
                     class: "btn btn--dark" %>
     </div>
   <% else %>
-    <%= link_to "Sign in",
+    <%= link_to t(:sign_in, scope: 'devise.shared.links'),
                 new_user_session_path,
                 class: "btn btn--dark navbar__right" %>
   <% end %>

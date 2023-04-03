@@ -6,6 +6,9 @@ pt-BR:
 
   create: 'Adicionar'
 
+  created: 'Criado com sucesso'
+  created_f: 'Criada com sucesso'
+
   navbar:
     assets: 'Ativos'
     tradings: 'Movimentações'
