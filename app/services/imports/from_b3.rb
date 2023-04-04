@@ -28,15 +28,18 @@ module Imports
       rows.each do |row|
         case row['Movimentação']
         when 'Grupamento'
-          create_inplit(row)
+          params = Imports::SetParams.call(row, :inplit)
+          create_inplit(params.merge(user:))
         when 'Transferência - Liquidação'
-          create_buy_or_sale(row)
+          params = Imports::SetParams.call(row, :trading)
+          create_buy_or_sale(params.merge(user:))
         else
-          create_proceed(row)
+          params = Imports::SetParams.call(row, :proceed)
+          create_proceed(params.merge(user:))
         end
       end
 
-      update_view
+      importer.finish_upload
 
       true
     end
@@ -84,51 +87,16 @@ module Imports
       nil
     end
 
-    def format_value(value)
-      value.delete(' R$')
-      value.gsub!(',', '.')
-      value.to_f
+    def create_buy_or_sale(params)
+      Trading.create(params)
     end
 
-    def get_stock_code(row)
-      row['Produto'][0..4]
+    def create_inplit(params)
+      Trading.create(params)
     end
 
-    def create_buy_or_sale(row)
-      stock_code = get_stock_code(row)
-      amount = row['Quantidade']
-      value_unit = format_value(row['Preço unitário'])
-      total_value = format_value(row['Valor da Operação'])
-      date = row['Data']
-      kind = row['Entrada/Saída'] == 'Credito' ? 'buy' : 'sale'
-
-      Trading.create(amount:, value_unit:, total_value:, date:, kind:, user:, stock_code:)
-    end
-
-    def create_inplit(row)
-      stock_code = get_stock_code(row)
-      amount = row['Quantidade']
-      date = row['Data']
-
-      Trading.create(kind: 'inplit', amount:, date:, stock_code:, user:)
-    end
-
-    def create_proceed(row)
-      stock_code = get_stock_code(row)
-      amount = row['Quantidade']
-      value_unit = format_value(row['Preço unitário'])
-      total_value = format_value(row['Valor da Operação'])
-      date = row['Data']
-      kind = row['Movimentação'] == 'Dividendo' ? 'dividends' : 'jcp'
-
-      Proceed.create(amount:, value_unit:, total_value:, date:, kind:, user:, stock_code:)
-    end
-
-    def update_view
-      Turbo::StreamsChannel.broadcast_replace_to(@user.id, :alerts,
-                                                 target: :alerts,
-                                                 partial: 'shared/assets/upload_completed',
-                                                 locals: { user: @user })
+    def create_proceed(params)
+      Proceed.create(params)
     end
   end
 end
