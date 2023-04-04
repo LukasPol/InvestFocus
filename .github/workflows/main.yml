@@ -17,6 +17,14 @@ jobs:
           --health-retries 5
         env:
           POSTGRES_PASSWORD: postgres
+      redis:
+        image: redis:alpine
+        ports: [ '6379:6379' ]
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
 
     steps:
       - uses: actions/checkout@v2
