@@ -36,6 +36,8 @@ module Imports
         end
       end
 
+      update_view
+
       true
     end
 
@@ -120,6 +122,13 @@ module Imports
       kind = row['Movimentação'] == 'Dividendo' ? 'dividends' : 'jcp'
 
       Proceed.create(amount:, value_unit:, total_value:, date:, kind:, user:, stock_code:)
+    end
+
+    def update_view
+      Turbo::StreamsChannel.broadcast_replace_to(@user.id, :alerts,
+                                                 target: :alerts,
+                                                 partial: 'shared/assets/upload_completed',
+                                                 locals: { user: @user })
     end
   end
 end

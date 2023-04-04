@@ -5,8 +5,8 @@
 import { application } from "./application"
 window.$ = window.jQuery = require('jquery');
 
-import HelloController from "./hello_controller"
-application.register("hello", HelloController)
+import FillTotalValueController from "./fill_total_value_controller"
+application.register("fill_total_value_controller", FillTotalValueController)
 
 import MaskInput from "./mask_input"
 application.register("mask_input", MaskInput)
@@ -14,5 +14,5 @@ application.register("mask_input", MaskInput)
 import navBarMobileController from "./navbar_mobile_controller"
 application.register("navbar_mobile", navBarMobileController)
 
-import FillTotalValueController from "./fill_total_value_controller"
-application.register("fill_total_value_controller", FillTotalValueController)
+import RemovalsController from "./removals_controller"
+application.register("removals", RemovalsController)
