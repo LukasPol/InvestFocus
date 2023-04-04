@@ -1,5 +1,9 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
   default_url_options host: ENV['DOMAIN_NAME']
+
+  mount Sidekiq::Web => "/sidekiq"
 
   unauthenticated :user do
     root to: 'home#index', as: :unauthenticated_user_root
