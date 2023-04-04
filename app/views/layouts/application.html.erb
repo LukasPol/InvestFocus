@@ -12,6 +12,13 @@
 
   <body data-flash-messages="<%= JSON.dump(flash.to_a) %>">
     <%= render 'shared/navbar' %>
+
+    <% if current_user %>
+      <%= turbo_frame_tag :alerts do %>
+        <%= turbo_stream_from current_user.id, :alerts %>
+      <% end %>
+    <% end %>
+
     <div class="p-3">
       <%= yield %>
     </div>

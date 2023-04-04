@@ -1,0 +1,11 @@
+---
+:verbose: false
+:concurrency: 2
+:max_retries: 5
+:timeout: 30
+
+:queues:
+  - [ highest, 10 ]
+  - [ instant_messages, 8 ]
+  - [ high, 4 ]
+  - [ medium, 2 ]

@@ -15,8 +15,10 @@ gem 'pg', '~> 1.4.5'
 gem 'puma', '~> 6.0.1'
 gem 'rails', '~> 7.0.3', '>= 7.0.3.1'
 gem 'ransack', '~> 4.0'
+gem 'redis', '~> 5.0.6'
 gem 'roo', '~> 2.9.0', github: 'roo-rb/roo'
 gem 'sass-rails', '~> 6.0'
+gem 'sidekiq', '~> 7.0.7'
 gem 'simple_form', '~> 5.1.0'
 gem 'sprockets-rails', '~> 3.4.2'
 gem 'stimulus-rails', '~> 1.2.1'
@@ -28,6 +30,7 @@ group :development, :test do
   gem 'pry'
   gem 'rails-controller-testing', '~> 1.0.5'
   gem 'rspec-rails', '~> 6.0.1'
+  gem 'rspec-sidekiq', '3.1.0'
   gem 'rubocop', '~> 1.41.1', require: false
   gem 'rubocop-rails', '~> 2.17.4', require: false
 end

@@ -10,4 +10,11 @@ class Importer < ApplicationRecord
 
     file.url
   end
+
+  def finish_upload
+    Turbo::StreamsChannel.broadcast_replace_to(user.id, :alerts,
+                                               target: :alerts,
+                                               partial: 'shared/assets/upload_completed',
+                                               locals: { user: })
+  end
 end
