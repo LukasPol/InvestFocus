@@ -21,7 +21,7 @@ jobs:
         image: redis:alpine
         ports: [ '6379:6379' ]
         options: >-
-          --health-cmd pg_isready
+          --health-cmd "redis-cli ping"
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
@@ -42,6 +42,7 @@ jobs:
           POSTGRES_PASSWORD: postgres
           RAILS_ENV: test
           DOMAIN_NAME: example.com
+          REDIS_URL: redis://localhost:6379/0
         run: |
           bundle install --jobs 4 --retry 3
           bundle exec rails db:create db:migrate
