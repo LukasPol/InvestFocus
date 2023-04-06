@@ -6,12 +6,12 @@
       <h1><%= t(:asset, scope: 'activerecord.models').pluralize %></h1>
     </div>
     <%= link_to "Importar",
-                new_importer_path,
+                new_importation_path,
                 class: "btn btn--primary",
-                data: { turbo_frame: dom_id(Importer.new) } %>
+                data: { turbo_frame: dom_id(Importation.new) } %>
   </div>
 
-  <%= turbo_frame_tag Importer.new %>
+  <%= turbo_frame_tag Importation.new %>
 
   <%= search_form_for @search, class: 'search' do |f| %>
     <div>

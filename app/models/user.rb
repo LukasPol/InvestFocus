@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :assets, dependent: :delete_all
   has_many :stocks, through: :assets
   has_many :proceeds, dependent: :delete_all
-  has_many :importers, dependent: :delete_all
+  has_many :importations, dependent: :delete_all
 
   validates :email, :password, :password_confirmation, presence: true
 

@@ -7,16 +7,16 @@ RSpec.describe Imports::FromB3 do
     Rack::Test::UploadedFile.new('spec/fixtures/acoes.xlsx', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
   end
 
-  let(:importer) { create(:importer) }
+  let(:importation) { create(:importation) }
 
   describe '.call' do
     context 'success' do
       before :each do
-        allow(importer).to receive(:file_url) do
+        allow(importation).to receive(:file_url) do
           file
         end
 
-        described_class.call(importer)
+        described_class.call(importation)
       end
 
       it 'should create record correct' do
@@ -38,21 +38,21 @@ RSpec.describe Imports::FromB3 do
 
     context 'fail' do
       it 'file not supported' do
-        importer = create(:importer, :without_lines)
-        allow(importer).to receive(:file_url) do
-          ActiveStorage::Blob.service.path_for(importer.file.key)
+        importation = create(:importation, :without_lines)
+        allow(importation).to receive(:file_url) do
+          ActiveStorage::Blob.service.path_for(importation.file.key)
         end
 
-        expect(described_class.call(importer).errors).to eq(['Arquivo não suportado'])
+        expect(described_class.call(importation).errors).to eq(['Arquivo não suportado'])
       end
 
       it 'dont have kind Buy/Sale/Inplit' do
-        importer = create(:importer, :others_kinds)
-        allow(importer).to receive(:file_url) do
-          ActiveStorage::Blob.service.path_for(importer.file.key)
+        importation = create(:importation, :others_kinds)
+        allow(importation).to receive(:file_url) do
+          ActiveStorage::Blob.service.path_for(importation.file.key)
         end
 
-        expect(described_class.call(importer).errors).to eq(['Não tem nenhuma Compra/Venda/Grupamento'])
+        expect(described_class.call(importation).errors).to eq(['Não tem nenhuma Compra/Venda/Grupamento'])
       end
     end
   end

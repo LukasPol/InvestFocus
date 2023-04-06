@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :importer do
+  factory :importation do
     user { create(:user) }
     file { Rack::Test::UploadedFile.new('spec/fixtures/acoes.xlsx', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet') }
   end

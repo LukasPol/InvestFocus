@@ -1,4 +1,6 @@
-class Importer < ApplicationRecord
+class Importation < ApplicationRecord
+  self.table_name = 'importation'
+
   belongs_to :user
 
   has_one_attached :file

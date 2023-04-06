@@ -1,4 +1,4 @@
-<%= simple_form_for importer, url: importer_index_path, html: { class: 'importer form' } do |f| %>
+<%= simple_form_for importation, url: importation_index_path, html: { class: 'importer form' } do |f| %>
   <%= f.input :file, as: :file %>
   <%= f.submit 'Importar', class: 'btn btn--secondary' %>
   <%= link_to "Cancelar", assets_path, class: "btn btn--light" %>

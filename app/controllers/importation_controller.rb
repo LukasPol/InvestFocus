@@ -1,13 +1,13 @@
-class ImporterController < ApplicationController
+class ImportationController < ApplicationController
   def new
-    @importer = Importer.new
+    @importation = Importation.new
   end
 
   def create
-    @importer = current_user.importers.new(file_param)
+    @importation = current_user.importations.new(file_param)
 
-    if @importer.save
-      Imports::StartImportationWorker.perform_async(@importer.id)
+    if @importation.save
+      Imports::StartImportationWorker.perform_async(@importation.id)
 
       respond_to do |format|
         format.html { redirect_to tradings_path, notice: 'Importação iniciada' }
@@ -21,6 +21,6 @@ class ImporterController < ApplicationController
   private
 
   def file_param
-    params.require(:importer).permit(:file)
+    params.require(:importation).permit(:file)
   end
 end
