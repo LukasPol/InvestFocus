@@ -24,6 +24,11 @@ module Imports
         @errors << { attachment: I18n.t(:without_kinds, scope: 'errors.importer') }
         return self
       end
+      puts('=' * 20)
+      puts(importer.status)
+      puts('=' * 20)
+
+      importer.update(status: :started)
 
       rows.each do |row|
         case row['Movimentação']
@@ -38,7 +43,9 @@ module Imports
           create_proceed(params.merge(user:))
         end
       end
-
+      puts('=' * 20)
+      puts(importer.status)
+      puts('=' * 20)
       importer.finish_upload
 
       true
