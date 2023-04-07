@@ -15,8 +15,17 @@ class Importation < ApplicationRecord
     file.url
   end
 
+  def start_upload
+    update(status: :started)
+    Turbo::StreamsChannel.broadcast_replace_to(user.id, :feedback_upload,
+                                               target: :feedback_upload,
+                                               partial: 'shared/imports/feedback_upload',
+                                               locals: { user:, percentage: 0 })
+  end
+
   def finish_upload
     update(status: :finished)
+    Turbo::StreamsChannel.broadcast_remove_to(user, self, target: :feedback_upload)
     Turbo::StreamsChannel.broadcast_replace_to(user.id, :alerts,
                                                target: :alerts,
                                                partial: 'shared/imports/upload_completed',

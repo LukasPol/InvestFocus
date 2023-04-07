@@ -24,13 +24,12 @@ module Imports
         @errors << { attachment: I18n.t(:without_kinds, scope: 'errors.importer') }
         return self
       end
-      puts('=' * 20)
-      puts(importer.status)
-      puts('=' * 20)
 
-      importer.update(status: :started)
+      rows_count = rows.count
 
-      rows.each do |row|
+      importer.start_upload
+
+      rows.each_with_index do |row, index|
         case row['Movimentação']
         when 'Grupamento'
           params = Imports::SetParams.call(row, :inplit)
@@ -42,10 +41,12 @@ module Imports
           params = Imports::SetParams.call(row, :proceed)
           create_proceed(params.merge(user:))
         end
+
+        update_percentage_processed(rows_count, index + 1)
       end
-      puts('=' * 20)
-      puts(importer.status)
-      puts('=' * 20)
+
+      sleep 0.5
+
       importer.finish_upload
 
       true
@@ -104,6 +105,15 @@ module Imports
 
     def create_proceed(params)
       Proceed.create(params)
+    end
+
+    def update_percentage_processed(rows_count, index)
+      percentage = ((index.to_f / rows_count) * 100)
+
+      Turbo::StreamsChannel.broadcast_replace_to(importer.id,
+                                                 target: importer,
+                                                 partial: 'shared/imports/progress_bar',
+                                                 locals: { importation: importer, percentage: })
     end
   end
 end

@@ -1,0 +1,17 @@
+<% importation = user.last_importation %>
+
+<% if importation.status != 'finished' %>
+  <%= turbo_frame_tag :feedback_upload, class: "message" do %>
+    <%= turbo_stream_from user, importation  %>
+    <% if importation.status == 'dont_started' %>
+      <div class="importation-dont-started">
+        Seu arquivo está na fila <span class="loading"></span>
+      </div>
+    <% elsif importation.status == 'started' %>
+      <div class="importation-started">
+        <p>Seu arquivo está sendo processado</p>
+        <%= render 'shared/imports/progress_bar', percentage: percentage, importation: %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>

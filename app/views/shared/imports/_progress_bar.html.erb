@@ -1,0 +1,4 @@
+<div id="<%= dom_id importation %>" class="importation-progress-bar">
+  <%= turbo_stream_from importation.id  %>
+  <div class="processed" style="width: <%= "#{percentage}%" %>"></div>
+</div>

@@ -15,4 +15,8 @@ class User < ApplicationRecord
   def name
     email.split('@').first&.capitalize
   end
+
+  def last_importation
+    importations.order(:created_at).last
+  end
 end
