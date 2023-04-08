@@ -45,7 +45,7 @@ module Imports
         update_percentage_processed(rows_count, index + 1)
       end
 
-      sleep 0.5
+      sleep 1
 
       importer.finish_upload
 

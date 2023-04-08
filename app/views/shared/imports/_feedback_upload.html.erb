@@ -1,6 +1,6 @@
 <% importation = user.last_importation %>
 
-<% if importation.status != 'finished' %>
+<% if importation.present? && importation.status != 'finished' %>
   <%= turbo_frame_tag :feedback_upload, class: "message" do %>
     <%= turbo_stream_from user, importation  %>
     <% if importation.status == 'dont_started' %>
