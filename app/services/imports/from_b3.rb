@@ -25,7 +25,11 @@ module Imports
         return self
       end
 
-      rows.each do |row|
+      rows_count = rows.count
+
+      importer.start_upload
+
+      rows.each_with_index do |row, index|
         case row['Movimentação']
         when 'Grupamento'
           params = Imports::SetParams.call(row, :inplit)
@@ -37,7 +41,11 @@ module Imports
           params = Imports::SetParams.call(row, :proceed)
           create_proceed(params.merge(user:))
         end
+
+        update_percentage_processed(rows_count, index + 1)
       end
+
+      sleep 1
 
       importer.finish_upload
 
@@ -61,7 +69,7 @@ module Imports
           row['Movimentação'] == 'Dividendo' ||
           row['Movimentação'] == 'Juros Sobre Capital Próprio'
       end
-      rows.sort { |a, b| a['Data'].to_date <=> b['Data'].to_date }
+      rows.sort! { |a, b| a['Data'].to_date <=> b['Data'].to_date }
       rows
     end
 
@@ -97,6 +105,15 @@ module Imports
 
     def create_proceed(params)
       Proceed.create(params)
+    end
+
+    def update_percentage_processed(rows_count, index)
+      percentage = ((index.to_f / rows_count) * 100)
+
+      Turbo::StreamsChannel.broadcast_replace_to(importer.id,
+                                                 target: importer,
+                                                 partial: 'shared/imports/progress_bar',
+                                                 locals: { importation: importer, percentage: })
     end
   end
 end

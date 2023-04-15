@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_23_181543) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_06_180525) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -57,11 +57,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_23_181543) do
     t.index ["user_id"], name: "index_assets_on_user_id"
   end
 
-  create_table "importers", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+  create_table "importation", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_importers_on_user_id"
+    t.integer "status", default: 0
+    t.index ["user_id"], name: "index_importation_on_user_id"
   end
 
   create_table "proceeds", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -121,7 +122,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_23_181543) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "assets", "stocks"
   add_foreign_key "assets", "users"
-  add_foreign_key "importers", "users"
+  add_foreign_key "importation", "users"
   add_foreign_key "proceeds", "assets"
   add_foreign_key "proceeds", "stocks"
   add_foreign_key "proceeds", "users"

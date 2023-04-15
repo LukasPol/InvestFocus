@@ -7,11 +7,11 @@ RSpec.describe Imports::StartImportationWorker, type: :worker do
   end
 
   describe '.perform' do
-    let(:importer) { create(:importer) }
+    let(:importation) { create(:importation) }
 
     it 'call the method to create job and send mail' do
       expect do
-        described_class.perform_async(importer.id)
+        described_class.perform_async(importation.id)
       end.to change(described_class.jobs, :size).by(1)
     end
   end

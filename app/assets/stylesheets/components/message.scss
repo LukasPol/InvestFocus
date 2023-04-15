@@ -7,4 +7,6 @@
   bottom: var(--space-xxxl);
   right: var(--space-xxxl);
   animation: appear-then-fade 10s both;
+  z-index: 999;
+  background-color: #FFF;
 }

@@ -14,10 +14,16 @@
     <%= render 'shared/navbar' %>
 
     <% if current_user %>
+      <%= turbo_frame_tag :feedback_upload do %>
+        <%= turbo_stream_from current_user.id, :feedback_upload %>
+        <%= render 'shared/imports/feedback_upload', percentage: 0, user: current_user %>
+      <% end %>
+
       <%= turbo_frame_tag :alerts do %>
         <%= turbo_stream_from current_user.id, :alerts %>
       <% end %>
     <% end %>
+
 
     <div class="p-3">
       <%= yield %>

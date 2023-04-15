@@ -1,0 +1,19 @@
+.importation-dont-started {
+  display: flex;
+  align-items: center;
+}
+
+.importation-started {
+  & .importation-progress-bar {
+    width: 100%;
+    height: 20px;
+    background-color: #DDD;
+    border-radius: var(--border-radius);
+
+    & > .processed {
+      height: 100%;
+      border-radius: var(--border-radius);
+      background-color: var(--color-primary-rotate);
+    }
+  }
+}

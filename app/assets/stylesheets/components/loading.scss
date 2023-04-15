@@ -1,0 +1,35 @@
+.lds-circle {
+  display: inline-block;
+  transform: translateZ(1px);
+}
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: var(--font-size-xl);
+  font-weight: bolder;
+  width: 2rem;
+  height: 2rem;
+  margin: 0 var(--space-xxs);
+  border-radius: 50%;
+  background-color: var(--color-tertiary);
+  animation: lds-circle 2s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+
+  &::after {
+    content: "$";
+  }
+}
+@keyframes lds-circle {
+  0%, 100% {
+    animation-timing-function: cubic-bezier(0.5, 0, 1, 0.5);
+  }
+  0% {
+    transform: rotateY(0deg);
+  }
+  50% {
+    transform: rotateY(180deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
+}

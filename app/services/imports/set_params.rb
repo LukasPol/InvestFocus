@@ -48,7 +48,7 @@ module Imports
     end
 
     def set_stock_code
-      params['Produto'][0..4]
+      params['Produto'][0..5].gsub(/\s+|-/, '')
     end
   end
 end
