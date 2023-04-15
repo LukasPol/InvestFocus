@@ -2,7 +2,7 @@ module Imports
   class StartImportationWorker
     include Sidekiq::Job
 
-    sidekiq_options queue: :highest, retry: 0
+    sidekiq_options queue: :highest, retry: 4
 
     def perform(import_id)
       @importation = Importation.find(import_id)
