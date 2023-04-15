@@ -69,7 +69,7 @@ module Imports
           row['Movimentação'] == 'Dividendo' ||
           row['Movimentação'] == 'Juros Sobre Capital Próprio'
       end
-      rows.sort { |a, b| a['Data'].to_date <=> b['Data'].to_date }
+      rows.sort! { |a, b| a['Data'].to_date <=> b['Data'].to_date }
       rows
     end
 
